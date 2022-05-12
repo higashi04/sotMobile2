@@ -1,32 +1,32 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Platform, SafeAreaView } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import Hello from './src/components/Hello';
-import Counter from './src/components/counter';
+
+import HomeScreen from './src/screens/Home';
+import Login from './src/screens/Login';
 
 const Stack = createNativeStackNavigator()
 
 export default function App() {
   return (
     <NavigationContainer>
+      <SafeAreaView style={styles.droidSafeArea}>
         <Stack.Navigator initialRouteName='Home'>
-          <Stack.Screen name='Home' component = {Hello}>
-             <Hello name='Cloud' />
-          </Stack.Screen>
-          <Stack.Screen name='Counter' component={Counter} />
+          <Stack.Screen name='Home' component = {Login}/>
+
         </Stack.Navigator>
         <StatusBar style="auto" />
+      </SafeAreaView>
     </NavigationContainer>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#06d6a0',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+    droidSafeArea: {
+      flex: 1,
+      backgroundColor: '#fff',
+      paddingTop: Platform.OS === 'android' ? 25 : 0
+    }
 });

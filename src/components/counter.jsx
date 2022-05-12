@@ -6,8 +6,10 @@ const Counter = () =>{
 
     return(
         <View style={styles.container}>
-            <Text>You clicked the button {count} times</Text>
-            <TouchableOpacity style={styles.button} onPress={() => setCount(count + 1)} title='Click me'/>
+            <Text style={styles.text}>You clicked the button {count} times, like the moron you are.</Text>
+            <TouchableOpacity style={styles.button} onPress={() => setCount(count + 1)} title='Click me'>
+                <Text style={styles.btnText}>Click me</Text>
+            </TouchableOpacity>
         </View>
     )
 }
@@ -15,12 +17,22 @@ const Counter = () =>{
 const styles = StyleSheet.create({
     container: {
         backgroundColor: '#ef476f',
+        margin: 10
     },
     button: {
-        
         backgroundColor: '#073b4c',
-        padding: 10,
-        marginBottom: 10
+        padding: 15,
+        margin: 15
+    },
+    text: {
+        padding: 20,
+        fontSize: 25,
+        color: 'white'
+    },
+    btnText : {
+        color: 'magenta',
+        fontSize: 20,
+        paddingLeft: 55
     }
 })
 
