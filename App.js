@@ -28,5 +28,5 @@ const styles = StyleSheet.create({
       flex: 1,
       backgroundColor: '#fff',
       paddingTop: Platform.OS === 'android' ? 25 : 0
-    }
+    },
 });
