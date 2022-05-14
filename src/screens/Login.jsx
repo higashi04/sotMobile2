@@ -115,6 +115,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     marginTop: 50,
     height: 450,
+    marginHorizontal: 10
   },
   passw: {
     paddingLeft: 50,

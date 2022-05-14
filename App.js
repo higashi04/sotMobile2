@@ -15,7 +15,7 @@ export default function App() {
     <NavigationContainer>
       <SafeAreaView style={styles.droidSafeArea}>
         <Stack.Navigator initialRouteName='Home'>
-          <Stack.Screen name='Home' component = {Login}/>
+          <Stack.Screen name='Home' component = {Buses}/>
 
         </Stack.Navigator>
         <StatusBar style="auto" />
