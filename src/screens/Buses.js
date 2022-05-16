@@ -41,7 +41,8 @@ const Buses = ({navigation}) => {
                           style={styles.btn}  onPress={
                           ()=> navigation.navigate('BusDetail', {
                             itemId: item._id,
-                            unit: item.unidad
+                            unit: item.unidad,
+                            driver: item.chofer
                           })}>
                           <Text style={styles.btnText} >Detalle</Text>
                         </Pressable>
