@@ -6,22 +6,46 @@ import {
   Text,
   ScrollView,
   Image,
-  Alert,
+  ActivityIndicator,
   Pressable,
   KeyboardAvoidingView,
   Platform,
+  Alert
 } from "react-native";
 import { SvgXml } from "react-native-svg";
+
+import axios from "axios";
 
 import logo from "../assets/272707556_231916139148938_3564323865832014711_n-removebg-small.png";
 import { PersonSvg, EyeFill, EyeSlashed } from "../assets/svgPaths";
 
 const Login = () => {
   const [text, SetText] = useState("");
+  const [user, setUser] = useState('');
   const [toggle, setToggle] = useState(true)
+  const [isSubmiting, setSubmit] = useState(false)
 
   function changeToggle() {
       setToggle(prevToggle => !prevToggle)
+  }
+  const onSubmit = () => {
+    if(text === '' && user === '') {
+        Alert.alert('Favor de llenar ambos campos.')
+        setSubmit(false)
+    } else {
+      handleLogin()
+    }
+  }
+
+  const handleLogin = (credentials) => {
+      const url = 'https://transportes-villarreal.herokuapp.com/users/login'
+      axios.post(url, credentials).then((response) => {
+        const result = response.data
+        setSubmit(true)
+        const {message, status, data} = result
+      }).catch(error => {
+        console.log(error.JSON())
+      })
   }
 
   return (
@@ -46,7 +70,7 @@ const Login = () => {
               viewBox="0 0 32 32"
             />
             </View>
-          <TextInput style={styles.input} placeholder="Usuario" placeholderTextColor='#669BC7' />
+          <TextInput style={styles.input} placeholder="Usuario" placeholderTextColor='#669BC7' onChangeText={setUser} value={user} />
           <View style={styles.boxOne}>
             <Text style={styles.passw}>Contraseña</Text>
             <SvgXml
@@ -69,13 +93,18 @@ const Login = () => {
             placeholder={"Contraseña"}
             placeholderTextColor='#669BC7'
           />
-          <Pressable
+         {isSubmiting && <Pressable
+            style={styles.submit}
+          >
+            <ActivityIndicator size='small' color='#fff' />
+          </Pressable> }
+         {!isSubmiting && <Pressable
             title="Iniciar Sesión"
-            onPress={() => Alert.alert("Button press")}
+            onPress={() => onSubmit()}
             style={styles.submit}
           >
             <Text style={styles.btnText}>Iniciar Sesión </Text>
-          </Pressable>
+          </Pressable> }
         </View>
       </KeyboardAvoidingView>
     </ScrollView>
@@ -88,10 +117,11 @@ const styles = StyleSheet.create({
     margin: 12,
     borderBottomWidth: 1,
     padding: 10,
-    // backgroundColor: "#779",
+    marginHorizontal: 50
   },
   body: {
     backgroundColor: "#669BC7",
+    paddingTop: 30
   },
   img: {
     width: 350,
@@ -114,14 +144,14 @@ const styles = StyleSheet.create({
   submit: {
     backgroundColor: "#2a9d8f",
     alignItems: "center",
-    justifyContent: "space-around",
-    paddingVertical: 12,
+    justifyContent: "center",
+    paddingVertical: 20,
     paddingHorizontal: 32,
     borderRadius: 4,
     elevation: 3,
     marginHorizontal: 100,
     marginVertical: 20,
-    marginBottom: 20,
+    borderRadius: 50,
     flexDirection: "row",
   },
   svg: {

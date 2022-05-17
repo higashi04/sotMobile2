@@ -1,14 +1,25 @@
 import React, { useState, useEffect } from "react";
 import { Text, View, StyleSheet, FlatList, ActivityIndicator, Pressable } from "react-native";
+import { TextInput } from "react-native-paper";
 
 
-const Buses = ({navigation}) => {
+const Drivers = ({navigation}) => {
     const [isLoading, setLoading] = useState(true);
     const [data, setData] = useState([]);
+    const [company, setCompany] = useState('')
   
-    const getBuses = async () => {
+    const getDrivers = async () => {
        try {
-        const response = await fetch('https://transportes-villarreal.herokuapp.com/buses/getBuses');
+        const response = await fetch('https://transportes-villarreal.herokuapp.com/drivers/getDrivers', {
+            method: 'POST',
+            headers: {
+              Accept: 'application/json',
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              company: company,
+            })
+          });
         const json = await response.json();
         setData(json);
       } catch (error) {
@@ -17,10 +28,10 @@ const Buses = ({navigation}) => {
         setLoading(false);
       }
     }
-  
     useEffect(() => {
-      getBuses();
-    }, []);
+        getDrivers();
+      }, []);
+
   
     return (
         <View style={styles.body}>
@@ -29,14 +40,17 @@ const Buses = ({navigation}) => {
                 <FlatList
                 ListHeaderComponent={
                     <View>
-                        <Text style={styles.h1}>Camiones de P L A C E H O L D E R</Text>
+                        <View>
+                            <Text style={styles.h1}>Choferes de {company}</Text>
+                            <TextInput onChangeText={setCompany} value={company} />
+                        </View>
                     </View>
                 }   
                 data={data}
                 keyExtractor={(value, index) => index.toString()}
                 renderItem={({ item }) => (
                     <View style={styles.li}> 
-                        <Text> Unidad: {item.unidad} </Text>
+                        <Text> Unidad: {item.name} </Text>
                         <Pressable 
                           style={styles.btn}  onPress={
                           ()=> navigation.navigate('BusDetail', {
@@ -56,8 +70,8 @@ const Buses = ({navigation}) => {
 
 const styles = StyleSheet.create({
     body: {
-          backgroundColor: '#669BC7',
-          paddingTop: 30
+        backgroundColor: '#669BC7',
+        paddingTop: 30
       },
       h1: {
           fontSize: 30,
@@ -84,4 +98,4 @@ const styles = StyleSheet.create({
       }
 })
 
-export default Buses
+export default Drivers

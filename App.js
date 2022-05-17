@@ -8,6 +8,7 @@ import Home from './src/screens/Home';
 import Login from './src/screens/Login';
 import Buses from './src/screens/Buses';
 import BusDetail from './src/screens/BusDetail';
+import Drivers from './src/screens/Drivers';
 
 const Stack = createNativeStackNavigator()
 
@@ -15,11 +16,26 @@ export default function App() {
   return (
     <NavigationContainer>
       <SafeAreaView style={styles.droidSafeArea}>
-        <Stack.Navigator initialRouteName='Home'>
+        <Stack.Navigator 
+          initialRouteName='Home'
+          screenOptions={{
+            headerStyle: {
+              backgroundColor: 'transparent',
+              marginBottom: 20
+            },
+            headerTintColor: '#fff',
+            headerTransparent: true,
+            headerTitle: '',
+            headerLeftContainerStyle: {
+              paddingLeft: 50
+            }
+          }}
+        >
           <Stack.Screen name='Home' component = {Home}/>
           <Stack.Screen name='Login' component = {Login}/>
           <Stack.Screen name='Buses' component = {Buses}/>
           <Stack.Screen name='BusDetail' component={BusDetail}/>
+          <Stack.Screen name='Drivers' component={Drivers}/>
         </Stack.Navigator>
         <StatusBar style="auto" />
       </SafeAreaView>
@@ -30,7 +46,7 @@ export default function App() {
 const styles = StyleSheet.create({
     droidSafeArea: {
       flex: 1,
-      backgroundColor: '#fff',
-      paddingTop: Platform.OS === 'android' ? 25 : 0
+      backgroundColor: '#669BC7',
+      paddingTop: Platform.OS === 'android' ? 55 : 30
     },
 });

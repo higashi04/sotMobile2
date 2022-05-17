@@ -18,6 +18,9 @@ const Home = ({navigation}) => {
                 <Pressable style={styles.btn} onPress={() => navigation.navigate('Buses')}>
                     <Text style={styles.btnText}>Camiones</Text>
                 </Pressable>
+                <Pressable style={styles.btn} onPress={() => navigation.navigate('Drivers')}>
+                    <Text style={styles.btnText}>Choferes</Text>
+                </Pressable>
             </View>
         </ScrollView>
     )
@@ -25,7 +28,8 @@ const Home = ({navigation}) => {
 
 const styles = StyleSheet.create({
     body: {
-        backgroundColor: '#669BC7'
+        backgroundColor: '#669BC7',
+        paddingTop: 30
     },
     img: {
         width: 350,
