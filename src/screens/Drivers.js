@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Text, View, StyleSheet, FlatList, ActivityIndicator, Pressable } from "react-native";
-import { TextInput } from "react-native-paper";
+import { Text, View, StyleSheet, FlatList, ActivityIndicator, Pressable,  TextInput } from "react-native";
+
 
 
 const Drivers = ({navigation}) => {
@@ -10,16 +10,18 @@ const Drivers = ({navigation}) => {
   
     const getDrivers = async () => {
        try {
-        const response = await fetch('https://transportes-villarreal.herokuapp.com/drivers/getDrivers', {
-            method: 'POST',
-            headers: {
-              Accept: 'application/json',
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-              company: company,
-            })
-          });
+        const response = await fetch('https://transportes-villarreal.herokuapp.com/drivers/getDrivers'
+        // , {
+        //     method: 'POST',
+        //     headers: {
+        //       Accept: 'application/json',
+        //       'Content-Type': 'application/json'
+        //     },
+        //     body: JSON.stringify({
+        //       fueDadoDeBaja: false
+        //     })
+        //   }
+          );
         const json = await response.json();
         setData(json);
       } catch (error) {
@@ -30,6 +32,7 @@ const Drivers = ({navigation}) => {
     }
     useEffect(() => {
         getDrivers();
+        return setData()
       }, []);
 
   
@@ -50,13 +53,18 @@ const Drivers = ({navigation}) => {
                 keyExtractor={(value, index) => index.toString()}
                 renderItem={({ item }) => (
                     <View style={styles.li}> 
-                        <Text> Unidad: {item.name} </Text>
+                        <Text> {item.name} </Text>
+                        <Text>{ item.company }</Text>
                         <Pressable 
                           style={styles.btn}  onPress={
-                          ()=> navigation.navigate('BusDetail', {
+                          ()=> navigation.navigate('DriverDetail', {
                             itemId: item._id,
-                            unit: item.unidad,
-                            driver: item.chofer
+                            unit: item.bus,
+                            driver: item.name,
+                            company: item.company,
+                            status: item.fueDadoDeBaja,
+                            coordinator: item.coordinator,
+                            photo: item.photo.url 
                           })}>
                           <Text style={styles.btnText} >Detalle</Text>
                         </Pressable>
@@ -95,6 +103,12 @@ const styles = StyleSheet.create({
           padding: 10,
           borderRadius: 50,
           margin: 10 
+      },
+      input: {
+        backgroundColor: '#fff',
+        borderBottomWidth: 2,
+        height: 2,
+        borderColor: '#000'
       }
 })
 
