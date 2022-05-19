@@ -29,7 +29,7 @@ const Login = () => {
       setToggle(prevToggle => !prevToggle)
   }
   const onSubmit = () => {
-    if(text === '' && user === '') {
+    if(text === '' || user === '') {
         Alert.alert('Favor de llenar ambos campos.')
         setSubmit(false)
     } else {

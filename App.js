@@ -10,6 +10,7 @@ import Buses from './src/screens/Buses';
 import BusDetail from './src/screens/BusDetail';
 import Drivers from './src/screens/Drivers';
 import DriverDetail from './src/screens/DriverDetail';
+import UserOpts from './src/screens/UserOpts';
 
 const Stack = createNativeStackNavigator()
 
@@ -38,6 +39,7 @@ export default function App() {
           <Stack.Screen name='BusDetail' component={BusDetail}/>
           <Stack.Screen name='Drivers' component={Drivers}/>
           <Stack.Screen name='DriverDetail' component={DriverDetail} />
+          <Stack.Screen name='User' component={UserOpts} />
         </Stack.Navigator>
         <StatusBar style="auto" />
       </SafeAreaView>

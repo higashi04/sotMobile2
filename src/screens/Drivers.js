@@ -11,16 +11,6 @@ const Drivers = ({navigation}) => {
     const getDrivers = async () => {
        try {
         const response = await fetch('https://transportes-villarreal.herokuapp.com/drivers/getDrivers'
-        // , {
-        //     method: 'POST',
-        //     headers: {
-        //       Accept: 'application/json',
-        //       'Content-Type': 'application/json'
-        //     },
-        //     body: JSON.stringify({
-        //       fueDadoDeBaja: false
-        //     })
-        //   }
           );
         const json = await response.json();
         setData(json);

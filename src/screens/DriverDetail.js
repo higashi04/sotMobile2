@@ -27,7 +27,7 @@ const DriverDetail =({route, navigation}) => {
 
     return(
         <ScrollView style={styles.body}>
-                <View>
+                <View style={styles.imgBox}>
                     <Image source={logo} style={styles.img} />
                 </View>
                     {
@@ -72,8 +72,7 @@ const styles = StyleSheet.create({
         width: 350,
         height: 150,
         marginTop: 20,
-        marginLeft: 20,
-        marginRight: "auto",
+        marginHorizontal: 100,
       },
       btn: {
           borderRadius: 50,
@@ -88,12 +87,16 @@ const styles = StyleSheet.create({
       btnText: {
         fontSize: 20
       },
+      imgBox: {
+        display: "flex",
+        alignItems: 'center',
+        justifyContent: 'center'
+      },
       gafete:{
-        width: 100,
-        height: 150,
+        width: 350,
+        height: 350,
         marginTop: 20,
-        marginLeft: 20,
-        marginRight: "auto",
+        marginHorizontal: 10
       }
 })
 
