@@ -27,6 +27,7 @@ const Buses = ({navigation}) => {
             {
                 isLoading ? <ActivityIndicator/> :
                 <FlatList
+                showsVerticalScrollIndicator={false}
                 ListHeaderComponent={
                     <View>
                         <Text style={styles.h1}>Camiones de P L A C E H O L D E R</Text>

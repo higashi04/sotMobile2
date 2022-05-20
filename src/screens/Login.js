@@ -37,9 +37,9 @@ const Login = () => {
     }
   }
 
-  const handleLogin = (credentials) => {
+  const handleLogin = () => {
       const url = 'https://transportes-villarreal.herokuapp.com/users/login'
-      axios.post(url, credentials).then((response) => {
+      axios.post(url, {user: user, text: text}).then((response) => {
         const result = response.data
         setSubmit(true)
         const {message, status, data} = result
@@ -49,13 +49,15 @@ const Login = () => {
   }
 
   return (
-    <ScrollView style={styles.body}>
-      <View>
-        <Image source={logo} style={styles.img} />
-      </View>
       <KeyboardAvoidingView
+        style={{flex: 1, backgroundColor: 'transparent'}}
         behavior={Platform.OS === "ios" ? "padding" : "height"}
+        keyboardVerticalOffset={43}
       >
+        <ScrollView style={styles.body}>
+        <View>
+          <Image source={logo} style={styles.img} />
+        </View>
         <View style={styles.loginBox}>
             <View style={styles.boxOne}>
             <Text style={styles.passw}>Usuario</Text>
@@ -106,8 +108,8 @@ const Login = () => {
             <Text style={styles.btnText}>Iniciar Sesión </Text>
           </Pressable> }
         </View>
+        </ScrollView>
       </KeyboardAvoidingView>
-    </ScrollView>
   );
 };
 

@@ -31,6 +31,7 @@ const Drivers = ({navigation}) => {
             {
                 isLoading ? <ActivityIndicator/> :
                 <FlatList
+                showsVerticalScrollIndicator={false}
                 ListHeaderComponent={
                     <View>
                         <View>
