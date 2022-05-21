@@ -12,6 +12,9 @@ const Home = ({navigation}) => {
                 <Image source={logo} style={styles.img} />
             </View>
             <View style={styles.box}>
+                <Pressable style={styles.btn} onPress={()=> navigation.navigate('SignUp')}>
+                    <Text style={styles.btnText}>Registrarse</Text>
+                </Pressable>
                 <Pressable style={styles.btn} onPress={()=> navigation.navigate('Login')}>
                     <Text style={styles.btnText}>Iniciar Sesión</Text>
                 </Pressable>

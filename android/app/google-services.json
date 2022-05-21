@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "576943282717",
+    "project_id": "tr-vill",
+    "storage_bucket": "tr-vill.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:576943282717:android:2b6ddaa03f4f5b7ed444f4",
+        "android_client_info": {
+          "package_name": "com.reactnative"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "576943282717-re2lpnb1kb8t705t4pjmudj3o2f6o0td.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAPWdF06r412yk_ve1W4ZfLMCeXgA8Zo-E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "576943282717-re2lpnb1kb8t705t4pjmudj3o2f6o0td.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
