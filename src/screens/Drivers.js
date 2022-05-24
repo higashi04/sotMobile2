@@ -55,7 +55,9 @@ const Drivers = ({navigation}) => {
                             company: item.company,
                             status: item.fueDadoDeBaja,
                             coordinator: item.coordinator,
-                            photo: item.photo.url 
+                            photo: item.photo.url,
+                            address: item.address,
+                            imss: item.imss 
                           })}>
                           <Text style={styles.btnText} >Detalle</Text>
                         </Pressable>

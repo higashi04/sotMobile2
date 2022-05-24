@@ -6,7 +6,7 @@ import noImg from '../assets/noimg.jpg'
 
 const DriverDetail =({route, navigation}) => {
     const [data, setData] = useState('')
-    const {unit, company, status, coordinator, driver, photo } = route.params
+    const {unit, company, status, coordinator, driver, photo, address, imss } = route.params
     // const [photo, setPhoto] = useState('')
 
     const getBus = async() => {
@@ -41,6 +41,8 @@ const DriverDetail =({route, navigation}) => {
                     <Text style={styles.text}>{!status ? 'Activo' : 'Inactivo'}</Text>
                     <Text style={styles.text}>Unidad: {data.unidad}</Text>
                     <Text style={styles.text}>{data.tipo}</Text>
+                    <Text style={styles.text}>Dirección: {JSON.stringify(address).replace(/"/g, '')}</Text>
+                    <Text style={styles.text}>IMSS: {JSON.stringify(imss).replace(/"/g, '')}</Text>
                 </View>
             <View>
                 <Pressable 
