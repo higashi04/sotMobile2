@@ -13,6 +13,7 @@ import BusDetail from './src/screens/BusDetail';
 import Drivers from './src/screens/Drivers';
 import DriverDetail from './src/screens/DriverDetail';
 import UserOpts from './src/screens/UserOpts';
+import RegisterScreen from './src/screens/Register';
 
 const Stack = createNativeStackNavigator()
 
@@ -42,6 +43,7 @@ export default function App() {
           <Stack.Screen name='Drivers' component={Drivers}/>
           <Stack.Screen name='DriverDetail' component={DriverDetail} />
           <Stack.Screen name='User' component={UserOpts} />
+          <Stack.Screen name='Register' component={RegisterScreen} />
         </Stack.Navigator>
         <StatusBar style="auto" />
       </SafeAreaView>

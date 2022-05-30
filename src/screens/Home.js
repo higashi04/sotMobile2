@@ -18,6 +18,9 @@ const Home = ({navigation}) => {
                 <Pressable style={styles.btn} onPress={()=> navigation.navigate('User')}>
                     <Text style={styles.btnText}>Placeholder, gotta remove</Text>
                 </Pressable>
+                <Pressable style={styles.btn} onPress={()=> navigation.navigate('Register')}>
+                    <Text style={styles.btnText}>Register</Text>
+                </Pressable>
 
             </View>
         </ScrollView>
@@ -27,7 +30,8 @@ const Home = ({navigation}) => {
 const styles = StyleSheet.create({
     body: {
         backgroundColor: '#669BC7',
-        paddingTop: 30
+        paddingTop: 30,
+
     },
     img: {
         width: 350,

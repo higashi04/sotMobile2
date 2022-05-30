@@ -1,6 +1,5 @@
 import React from "react";
 import { StyleSheet, TextInput } from "react-native";
-import { windowHeight, windowWidth } from "../utils/Dimensions";
 
 const FormInput = (props) => {
   return (
