@@ -19,6 +19,7 @@ const RegisterScreen = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [company, setCompany] = useState("");
+  const [username, setUsername] = useState("");
   const [toggle, setToggle] = useState(true);
 
   function changeToggle() {
@@ -32,6 +33,13 @@ const RegisterScreen = () => {
       keyboardVerticalOffset={43}
     >
       <View style={styles.inputContainer}>
+        <TextInput
+          style={styles.input}
+          placeholder="Usuario"
+          value={username}
+          placeholderTextColor='#669BC7'
+          onChangeText={setUsername}
+        />
         <TextInput
           style={styles.input}
           placeholder="Email"

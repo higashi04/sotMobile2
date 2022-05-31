@@ -1,5 +1,5 @@
 // Import the functions you need from the SDKs you need
-import * as firebase from "firebase";
+import * as firebase from "firebase/compat";
 
 require('dotenv')
 // TODO: Add SDKs for Firebase products that you want to use
@@ -25,5 +25,7 @@ if(firebase.apps.length === 0) {
     app = firebase.app()
 }
 
-// const auth = 
+const auth = firebase.auth()
+
+export {auth}
 
