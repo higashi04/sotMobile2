@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
           flex: 1, 
           alignItems: 'center',
           justifyContent: 'center',
-          flexDirection: 'row'
+          flexDirection: 'column'
       },
       btnText: {
           fontSize: 15

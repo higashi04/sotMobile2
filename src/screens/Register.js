@@ -22,10 +22,21 @@ const RegisterScreen = () => {
   const [username, setUsername] = useState("");
   const [toggle, setToggle] = useState(true);
 
+  const options = {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: `{"email":"${email}","username":"${username}","firstName":"${firstName}","lastName":"${lastName}","company":"${company}","password":"${password}"}`,
+  };
+
   function changeToggle() {
     setToggle((prevToggle) => !prevToggle);
   }
-
+  const handleSubmit = () => {
+    fetch("https://transportes-villarreal.herokuapp.com/users/signup", options)
+    .then((response) => response.json())
+    .then((response) => console.log(response))
+    .catch((err) => console.error(err));
+  };
   return (
     <KeyboardAvoidingView
       style={styles.container}
@@ -36,15 +47,18 @@ const RegisterScreen = () => {
         <TextInput
           style={styles.input}
           placeholder="Usuario"
+          autoCapitalize="none"
+          autoCorrect={false}
           value={username}
-          placeholderTextColor='#669BC7'
+          placeholderTextColor="#669BC7"
           onChangeText={setUsername}
         />
         <TextInput
           style={styles.input}
           placeholder="Email"
           value={email}
-          placeholderTextColor='#669BC7'
+          autoCapitalize="none"
+          placeholderTextColor="#669BC7"
           onChangeText={setEmail}
         />
         <TextInput
@@ -87,13 +101,17 @@ const RegisterScreen = () => {
           onChangeText={setPassword}
           secureTextEntry={toggle ? true : false}
           style={styles.input}
+          autoCapitalize="none"
+          autoCorrect={false}
           value={password}
           placeholder={"Contraseña"}
           placeholderTextColor="#669BC7"
         />
       </View>
       <TouchableOpacity>
-          <Button title="Submit" onPress={()=> Alert.alert(company)}><Text>Submit</Text></Button>
+        <Button title="Submit" onPress={() => handleSubmit()}>
+          <Text>Submit</Text>
+        </Button>
       </TouchableOpacity>
     </KeyboardAvoidingView>
   );
@@ -112,7 +130,7 @@ const styles = StyleSheet.create({
     backgroundColor: "grey",
     borderRadius: 10,
   },
-  
+
   svgEye: {
     marginTop: 5,
     marginLeft: -15,
@@ -122,7 +140,7 @@ const styles = StyleSheet.create({
     paddingVertical: 15,
     backgroundColor: "white",
     marginBottom: 5,
-    borderRadius: 10
+    borderRadius: 10,
   },
 });
 
