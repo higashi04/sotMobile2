@@ -1,6 +1,6 @@
 import React from "react";
 import { StatusBar } from "expo-status-bar";
-import { Provider as StoreProvider } from "react-redux";
+
 import { StyleSheet, Platform, SafeAreaView } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -14,13 +14,12 @@ import BusDetail from "./src/screens/BusDetail";
 import Drivers from "./src/screens/Drivers";
 import DriverDetail from "./src/screens/DriverDetail";
 import UserOpts from "./src/screens/UserOpts";
-import RegisterScreen from "./src/screens/Register";
+import Register from "./src/screens/Register";
 
 const Stack = createNativeStackNavigator();
 
 function App() {
   return (
-    <StoreProvider>
       <NavigationContainer>
         <SafeAreaView style={styles.droidSafeArea}>
           <Stack.Navigator
@@ -45,12 +44,11 @@ function App() {
             <Stack.Screen name="Drivers" component={Drivers} />
             <Stack.Screen name="DriverDetail" component={DriverDetail} />
             <Stack.Screen name="User" component={UserOpts} />
-            <Stack.Screen name="Register" component={RegisterScreen} />
+            <Stack.Screen name="Register" component={Register} />
           </Stack.Navigator>
           <StatusBar style="auto" />
         </SafeAreaView>
       </NavigationContainer>
-    </StoreProvider>
   );
 }
 

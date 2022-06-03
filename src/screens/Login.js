@@ -20,8 +20,8 @@ import logo from "../assets/272707556_231916139148938_3564323865832014711_n-remo
 import { PersonSvg, EyeFill, EyeSlashed } from "../assets/svgPaths";
 
 const Login = () => {
-  const [text, SetText] = useState("");
-  const [user, setUser] = useState('');
+  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('');
   const [toggle, setToggle] = useState(true)
   const [isSubmiting, setSubmit] = useState(false)
 
@@ -29,7 +29,7 @@ const Login = () => {
       setToggle(prevToggle => !prevToggle)
   }
   const onSubmit = () => {
-    if(text === '' || user === '') {
+    if(text === '' || email === '') {
         Alert.alert('Favor de llenar ambos campos.')
         setSubmit(false)
     } else {
@@ -38,14 +38,16 @@ const Login = () => {
   }
 
   const handleLogin = () => {
+    const options = {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: `{"email":"${email}","password":"${password}"}`,
+    };
       const url = 'https://transportes-villarreal.herokuapp.com/users/login'
-      axios.post(url, {user: user, text: text}).then((response) => {
-        const result = response.data
-        setSubmit(true)
-        const {message, status, data} = result
-      }).catch(error => {
-        console.log(error.JSON())
-      })
+      fetch(url, options)
+      .then((response) => response.json())
+      .then((response) => console.log(response))
+      .catch((err) => console.error(err));
   }
 
   return (
@@ -61,7 +63,7 @@ const Login = () => {
         <View style={styles.loginBox}>
             <View style={styles.boxOne}>
             <Text style={styles.passw}>Usuario</Text>
-          <SvgXml
+          {/* <SvgXml
               style={styles.svg}
               xml={PersonSvg}
               width="32"
@@ -70,12 +72,12 @@ const Login = () => {
               strokeWidth=".5"
               fill="black"
               viewBox="0 0 32 32"
-            />
+            /> */}
             </View>
-          <TextInput style={styles.input} placeholder="Usuario" placeholderTextColor='#669BC7' onChangeText={setUser} value={user} />
+          <TextInput style={styles.input} placeholder="Email" placeholderTextColor='#669BC7' onChangeText={setEmail} value={email} />
           <View style={styles.boxOne}>
             <Text style={styles.passw}>Contraseña</Text>
-            <SvgXml
+            {/* <SvgXml
               xml={toggle ? EyeFill : EyeSlashed}
               style={styles.svgEye}
               width="48"
@@ -85,13 +87,13 @@ const Login = () => {
               fill="black"
               viewBox="0 0 48 48"
               onPress={changeToggle}
-            />
+            /> */}
           </View>
           <TextInput
-            onChangeText={SetText}
+            onChangeText={setPassword}
             secureTextEntry={toggle ? true : false}
             style={styles.input}
-            value={text}
+            value={password}
             placeholder={"Contraseña"}
             placeholderTextColor='#669BC7'
           />

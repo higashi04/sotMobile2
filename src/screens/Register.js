@@ -13,7 +13,7 @@ import {
 import { SvgXml } from "react-native-svg";
 import { EyeFill, EyeSlashed } from "../assets/svgPaths";
 
-const RegisterScreen = () => {
+const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [firstName, setFirstName] = useState("");
@@ -84,7 +84,7 @@ const RegisterScreen = () => {
         />
         <View style={styles.boxOne}>
           <Text>
-            <SvgXml
+            {/* <SvgXml
               xml={toggle ? EyeFill : EyeSlashed}
               style={styles.svgEye}
               width="48"
@@ -94,7 +94,7 @@ const RegisterScreen = () => {
               fill="black"
               viewBox="0 0 48 48"
               onPress={changeToggle}
-            />
+            /> */} svg holder
           </Text>
         </View>
         <TextInput
@@ -144,4 +144,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default RegisterScreen;
+export default Register;
